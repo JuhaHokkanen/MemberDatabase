@@ -1,0 +1,83 @@
+﻿<Window x:Class="MemberDatabase.MainWindow"
+xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+Title="Member Database (Azure Cosmos DB)" Height="540" Width="820">
+    <Grid Margin="10">
+        <!-- OUTER GRID ROWS: Auto | * | Auto -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+
+        <!-- FORM GRID -->
+        <Grid Grid.Row="0" Margin="0,0,0,8">
+            <!-- COLUMNS: Auto | * | Auto | * | Auto | * | Auto | * -->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+
+            <TextBlock Text="Etunimi" VerticalAlignment="Center"/>
+            <TextBox x:Name="TbFirst" Grid.Column="1" Margin="6,0,12,0"/>
+
+
+            <TextBlock Text="Sukunimi" Grid.Column="2" VerticalAlignment="Center"/>
+            <TextBox x:Name="TbLast" Grid.Column="3" Margin="6,0,12,0"/>
+
+
+            <TextBlock Text="Sähköposti" Grid.Column="4" VerticalAlignment="Center"/>
+            <TextBox x:Name="TbEmail" Grid.Column="5" Margin="6,0,12,0"/>
+
+
+            <TextBlock Text="Puhelin" Grid.Column="6" VerticalAlignment="Center"/>
+            <TextBox x:Name="TbPhone" Grid.Column="7" Margin="6,0,0,0"/>
+
+
+            <TextBlock Text="Osoite" Grid.Row="1" VerticalAlignment="Center"/>
+            <TextBox x:Name="TbAddress" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Margin="6,8,12,0"/>
+
+
+            <TextBlock Text="Postinumero" Grid.Row="1" Grid.Column="4" VerticalAlignment="Center"/>
+            <TextBox x:Name="TbPostal" Grid.Row="1" Grid.Column="5" Margin="6,8,12,0"/>
+
+
+            <TextBlock Text="Alku pvm" Grid.Row="1" Grid.Column="6" VerticalAlignment="Center"/>
+            <DatePicker x:Name="DpStart" Grid.Row="1" Grid.Column="7" Margin="6,8,0,0"/>
+        </Grid>
+
+
+        <!-- LIST -->
+        <DataGrid x:Name="Grid" Grid.Row="1" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" SelectionChanged="OnSelect">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Etunimi" Binding="{Binding FirstName}" Width="*"/>
+                <DataGridTextColumn Header="Sukunimi" Binding="{Binding LastName}" Width="*"/>
+                <DataGridTextColumn Header="Sähköposti" Binding="{Binding Email}" Width="*"/>
+                <DataGridTextColumn Header="Puhelin" Binding="{Binding Phone}" Width="*"/>
+                <DataGridTextColumn Header="Postinumero" Binding="{Binding PostalCode}" Width="*"/>
+                <DataGridTextColumn Header="Alku pvm" Binding="{Binding MembershipStart, StringFormat=yyyy-MM-dd}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+        <!-- BUTTONS -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,8,0,0">
+            <Button Content="Lisää" Width="90" Margin="0,0,6,0" Click="OnAdd"/>
+            <Button Content="Päivitä" Width="90" Margin="0,0,6,0" Click="OnUpdate"/>
+            <Button Content="Poista" Width="90" Margin="0,0,6,0" Click="OnDelete"/>
+            <Button Content="Tyhjennä" Width="90" Click="OnClear"/>
+        </StackPanel>
+    </Grid>
+</Window>
