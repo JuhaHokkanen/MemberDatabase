@@ -10,8 +10,7 @@ namespace MemberDatabase;
 
 public partial class MainWindow : Window
 {
-    //private const string ConnectionString = "mongodb://memberdatabase:3vTgNwnHzwMUogdFoDCfQvjNzbYTMcickBp4U43vtV4xyHhcpWYYSchrsitaht3HcG8rl4iAlAg2ACDbDExtzQ==@memberdatabase.mongo.cosmos.azure.com:10255/?ssl=true&replicaSet=globaldb&retrywrites=false&maxIdleTimeMS=120000&appName=@memberdatabase@";
-
+    
     private const string ConnectionString = "mongodb://localhost:27017";
 
     private const string DbName = "MemberDatabaseDb";
